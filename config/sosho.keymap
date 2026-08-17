@@ -46,6 +46,10 @@
     acceleration-exponent = <0>;   // 加速なし
 };
 
+&mt {
+    require-prior-idle-ms = <150>;
+};
+
 /{
 keymap {
     compatible = "zmk,keymap";
@@ -55,7 +59,7 @@ keymap {
             &lt 1 ESC  &kp Q   &kp W  &kp E     &kp R     &kp T      &kp Y      &kp U      &kp I      &kp O    &kp P     &mt LCTRL LBKT
             &lt 2 TAB  &kp A   &kp S  &kp D     &kp F     &kp G      &kp H      &kp J      &kp K      &kp L    &kp SEMI  &mt LALT RBKT
             &kp LSHFT  &kp Z   &kp X  &kp C     &kp V     &kp B      &kp N      &kp M      &kp COMMA  &kp DOT  &kp SLASH &mt LGUI SQT
-            &kp LG(LA(LC(C)))  &alt_x2    &lt_mkp 3 LCLK  &mkp RCLK      &kp ENTER  &kp SPACE                      &kp GRAVE &kp BSLH
+            &kp LG(LA(LC(C)))  &alt_x2    &mkp LCLK       &mkp RCLK      &kp ENTER  &kp SPACE                      &kp GRAVE &kp BSLH
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
