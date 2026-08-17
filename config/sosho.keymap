@@ -104,7 +104,7 @@ keymap {
             &none &none        &none &none &none &none      &none  &bt BT_SEL 0  &bt BT_SEL 1  &none  &none  &none
             &none &bt BT_NXT   &none &none &none &none      &none  &none         &none         &none  &none  &none
             &none &none        &none &none &none &none      &none  &none         &none         &none  &none  &none
-            &none &none             &none &none      &none  &none                &none  &none
+            &none &none             &none &bootloader &sys_reset  &none          &none  &none
         >;
     };
     scroll {
