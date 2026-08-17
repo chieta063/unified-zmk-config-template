@@ -71,7 +71,7 @@ keymap {
         bindings = <
             &lt 1 ESC  &kp Q   &kp W  &kp E     &kp R     &kp T      &kp Y      &kp U      &kp I      &kp O    &kp P     &mt LCTRL LBKT
             &lt 2 TAB  &kp A   &kp S  &kp D     &kp F     &kp G      &kp H      &kp J      &kp K      &kp L    &kp SEMI  &mt LALT RBKT
-            &kp LSHFT  &kp Z   &kp X  &kp C     &kp V     &kp B      &kp N      &kp M      &kp COMMA  &kp DOT  &kp SLASH &mt LGUI GRAVE
+            &kp LSHFT  &kp Z   &kp X  &kp C     &kp V     &kp B      &kp N      &kp M      &kp COMMA  &kp DOT  &kp SLASH &mt LGUI SQT
             &kp LG(LA(LC(C)))  &alt_x2    &mo 3     &kp BSPC      &kp ENTER  &kp SPACE                      &kp GRAVE &kp BSLH
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
