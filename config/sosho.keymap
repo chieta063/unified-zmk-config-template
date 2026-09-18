@@ -87,10 +87,10 @@ keymap {
 
     layer_2 {
         bindings = <
-            &none  &none  &kp LG(LS(O))  &kp LC(LG(UP))    &kp LG(LS(LBKT))   &kp LG(LS(RBKT))  &none         &kp LC(LA(E))  &kp LC(LA(R))  &kp LC(LA(T))  &none      &mkp MCLK
-            &none  &none  &kp LC(LEFT)   &kp LC(UP)        &kp LC(RIGHT)      &kp LG(LS(N4))    &kp LA(LEFT)  &kp LEFT       &kp UP         &kp DOWN       &kp RIGHT  &kp LA(RIGHT)
-            &none  &none  &kp LG(LS(K))  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &kp LG(LS(Y))     &kp LG(LEFT)  &kp LC(LA(D))  &kp LC(LA(F))  &kp LC(LA(G))  &none      &kp LG(RIGHT)
-            &none  &none                                   &kp LG(C)          &kp LG(V)         &kp LG(R)     &none                                        &none      &none
+            &none  &none  &kp LG(LEFT)  &kp LG(UP)  &kp LG(DOWN)  &kp LG(RIGHT)     &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR   &kp LC(LA(D))  &kp LC(LA(E))
+            &none  &none  &kp LEFT      &kp UP      &kp DOWN      &kp RIGHT         &kp DLLR  &kp PRCNT  &kp CARET  &kp UNDER  &kp LC(LA(F))  &kp LC(LA(R))
+            &none  &none  &kp LBRC      &kp RBRC    &kp DQT       &kp COLON         &kp EXCL  &kp AT     &kp HASH   &kp PIPE   &kp LC(LA(G))  &kp LC(LA(T))
+            &none  &none                &kp LSHFT   &kp LALT      &kp LC(LEFT)      &kp LC(RIGHT)                              &kp LG(LS(N4))  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
