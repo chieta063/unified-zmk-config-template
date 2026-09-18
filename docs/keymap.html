@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>双掌 (sosho) キー配列</title>
+<style>
+  @page { size: A4 portrait; margin: 12mm 10mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Helvetica Neue", Arial, sans-serif;
+    color: #1d2126;
+    margin: 0;
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  h1 { font-size: 19pt; margin: 0 0 2mm; letter-spacing: .02em; }
+  h1 .sub { font-size: 10pt; font-weight: 400; color: #6b7480; margin-left: 3mm; }
+  h2 {
+    font-size: 12pt; margin: 0 0 1.5mm;
+    padding-bottom: 1mm; border-bottom: 1.2px solid #1d2126;
+  }
+  h2 .note { font-size: 8.5pt; font-weight: 400; color: #6b7480; margin-left: 3mm; }
+  h3 { font-size: 10pt; margin: 0 0 1.5mm; }
+
+  .meta { color: #6b7480; font-size: 8.5pt; margin-bottom: 4mm; }
+  .layer-block { margin-bottom: 6mm; }
+
+  /* ---- keyboard ---- */
+  .kb { display: flex; justify-content: center; gap: 7mm; margin: 2.5mm 0 2mm; }
+  .half { display: grid; grid-template-columns: repeat(6, 14.5mm); grid-auto-rows: 11mm; gap: 1.1mm; }
+  .key {
+    border: 0.8px solid #b8c0c9; border-radius: 1.2mm; background: #fff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 0.4mm; overflow: hidden;
+  }
+  .key .main { font-size: 7.6pt; font-weight: 600; line-height: 1.15; }
+  .key .sup  { font-size: 5.6pt; color: #5b6572; line-height: 1.1; margin-top: 0.3mm; }
+  .key .pre  { font-size: 5.6pt; color: #5b6572; line-height: 1.1; margin-bottom: 0.3mm; }
+  .key.small .main { font-size: 6.4pt; }
+  .key.xsmall .main { font-size: 5.6pt; }
+
+  .none { background: #f4f6f8; border-style: dashed; border-color: #d6dce2; }
+  .none .main { color: #b3bbc4; font-weight: 400; }
+  .mod   { background: #e8eef7; border-color: #9bb2d4; }
+  .lay   { background: #eae7f6; border-color: #a99ed8; }
+  .mouse { background: #e6f2ec; border-color: #8fc0aa; }
+  .sys   { background: #fbe9e7; border-color: #e0a79e; }
+  .num   { background: #fdf3e0; border-color: #ddbe85; }
+
+  .gap { visibility: hidden; }
+
+  /* ---- tables / notes ---- */
+  table { border-collapse: collapse; width: 100%; font-size: 8.5pt; }
+  th, td { border: 0.8px solid #ccd3da; padding: 1.2mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #eef1f4; font-weight: 600; width: 32mm; }
+  td code, li code, p code { font-family: "SF Mono", Menlo, monospace; font-size: 8pt; background: #f1f3f5; padding: 0 0.6mm; border-radius: 0.6mm; }
+
+  .cols { display: flex; gap: 5mm; }
+  .cols > div { flex: 1; }
+
+  ul { margin: 0 0 3mm; padding-left: 4.5mm; }
+  li { margin-bottom: 0.8mm; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 2mm 4mm; font-size: 8pt; margin: 2mm 0 4mm; align-items: center; }
+  .legend span.sw { display: inline-block; width: 4mm; height: 3mm; border: 0.8px solid #b8c0c9; border-radius: 0.6mm; margin-right: 1.2mm; vertical-align: -0.3mm; }
+  .legend .item { white-space: nowrap; }
+
+  .section { margin-bottom: 5mm; }
+  .hand-label { text-align: center; font-size: 7.5pt; color: #6b7480; margin-bottom: 1mm; letter-spacing: .08em; }
+  .kb-wrap { display: flex; justify-content: center; gap: 7mm; }
+  .kb-wrap > div { }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<div class="page">
+  <h1>双掌 (sosho) キー配列<span class="sub">ZMK ファームウェア verB2</span></h1>
+  <div class="meta">
+    44キー分割キーボード（左右各22キー）／ 文字配列: 大西配列 ／ エンコーダ 左右各1 ／ ポインティングデバイス: トラックパッド版・トラックボール版
+    &nbsp;·&nbsp; 出典: <code>config/sosho.keymap</code>
+  </div>
+
+  <div class="legend">
+    <span class="item"><span class="sw" style="background:#fff"></span>通常キー</span>
+    <span class="item"><span class="sw mod"></span>修飾キー / Mod-Tap</span>
+    <span class="item"><span class="sw lay"></span>レイヤー切替</span>
+    <span class="item"><span class="sw mouse"></span>マウス操作</span>
+    <span class="item"><span class="sw num"></span>数字 / 記号</span>
+    <span class="item"><span class="sw sys"></span>システム / Bluetooth</span>
+    <span class="item"><span class="sw none"></span>未割当 (none)</span>
+  </div>
+
+  <div class="layer-block">
+    <h2>Default レイヤー<span class="note">大西配列 — ローマ字入力向けに最適化された文字配列</span></h2>
+    <div class="kb">
+      <div class="half">
+        <!-- row 0 -->
+        <div class="key lay small"><div class="pre">Hold: L1</div><div class="main">Esc</div></div>
+        <div class="key"><div class="main">Q</div></div>
+        <div class="key"><div class="main">L</div></div>
+        <div class="key"><div class="main">U</div></div>
+        <div class="key num"><div class="main">,</div></div>
+        <div class="key num"><div class="main">.</div></div>
+        <!-- row 1 -->
+        <div class="key lay small"><div class="pre">Hold: L2</div><div class="main">Tab</div></div>
+        <div class="key"><div class="main">E</div></div>
+        <div class="key"><div class="main">I</div></div>
+        <div class="key"><div class="main">A</div></div>
+        <div class="key"><div class="main">O</div></div>
+        <div class="key num"><div class="main">-</div></div>
+        <!-- row 2 -->
+        <div class="key mod"><div class="main">Shift</div></div>
+        <div class="key"><div class="main">Z</div></div>
+        <div class="key"><div class="main">X</div></div>
+        <div class="key"><div class="main">C</div></div>
+        <div class="key"><div class="main">V</div></div>
+        <div class="key num"><div class="main">;</div></div>
+        <!-- row 3 -->
+        <div class="key mod small"><div class="main">Option</div></div>
+        <div class="key mod"><div class="main">Ctrl</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key mouse small"><div class="main">左<br>クリック</div></div>
+        <div class="key mouse small"><div class="pre">Hold: L4</div><div class="main">右クリック</div></div>
+      </div>
+
+      <div class="half">
+        <!-- row 0 -->
+        <div class="key"><div class="main">F</div></div>
+        <div class="key"><div class="main">W</div></div>
+        <div class="key"><div class="main">R</div></div>
+        <div class="key"><div class="main">Y</div></div>
+        <div class="key"><div class="main">P</div></div>
+        <div class="key small"><div class="main">BS</div></div>
+        <!-- row 1 -->
+        <div class="key"><div class="main">K</div></div>
+        <div class="key"><div class="main">T</div></div>
+        <div class="key"><div class="main">N</div></div>
+        <div class="key"><div class="main">S</div></div>
+        <div class="key"><div class="main">H</div></div>
+        <div class="key num"><div class="main">=</div></div>
+        <!-- row 2 -->
+        <div class="key"><div class="main">G</div></div>
+        <div class="key"><div class="main">D</div></div>
+        <div class="key"><div class="main">M</div></div>
+        <div class="key"><div class="main">J</div></div>
+        <div class="key"><div class="main">B</div></div>
+        <div class="key mod small"><div class="pre">Hold: Ctrl</div><div class="main">/</div></div>
+        <!-- row 3 -->
+        <div class="key mod small"><div class="pre">Hold: ⌘</div><div class="main">Enter</div></div>
+        <div class="key mod small"><div class="pre">Hold: ⌥</div><div class="main">Space</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key mod small"><div class="pre">Hold: ⇧</div><div class="main">`</div></div>
+        <div class="key lay small"><div class="pre">Hold: L3</div><div class="main">\</div></div>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>エンコーダ（左）</th><td>回転で横スクロール（左 / 右）</td></tr>
+      <tr><th>エンコーダ（右）</th><td>回転で縦スクロール（下 / 上）</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Default レイヤーの特殊キー</h3>
+    <table>
+      <tr><th>Esc / Tab</th><td>単押しで Esc・Tab、長押し中はレイヤー 1・2 が有効（<code>&amp;lt</code>）。レイヤー 1 は Lock キーで固定もできる</td></tr>
+      <tr><th>Enter / `</th><td>単押しで Enter・<code>`</code>、長押しで <strong>⌘</strong>・<strong>Shift</strong>（<code>mtq</code>、balanced / 200ms。<code>quick-tap-ms</code> により連打も効く）</td></tr>
+      <tr><th>Space</th><td>単押しで Space、長押しで <strong>Option</strong>（<code>mt_spc</code>、tap-preferred / 200ms。タイプ直後 150ms は必ず Space を出す）</td></tr>
+      <tr><th>Option（左右 2 箇所）</th><td>左小指の最下段と、Space の長押し。<code>⌘⌥</code> は ⌘ が右親指のため、左の Option を使う</td></tr>
+      <tr><th>Ctrl（左右 2 箇所）</th><td>左小指の最下段と、右小指下段の <code>/</code> 長押し。<code>Ctrl+P</code> は左、<code>Ctrl+E</code> <code>Ctrl+Z</code> は右を使う</td></tr>
+      <tr><th>Shift（左右 2 箇所）</th><td>左小指外側の下段と、右小指最下段の <code>`</code> 長押し。<code>Q</code> <code>E</code> <code>Z</code> は右 Shift、<code>P</code> <code>H</code> <code>B</code> は左 Shift を使う</td></tr>
+      <tr><th>BS / = （右小指）</th><td>単独キーのため、押しっぱなしでキーリピートが効く</td></tr>
+      <tr><th>\</th><td>単押しで <code>\</code>、長押しでレイヤー 3（F キー / Bluetooth）。左手を使わずに入れる</td></tr>
+      <tr><th>右クリック</th><td>単押しで右クリック、長押しでレイヤー 4（スクロール）。トラックパッドが縦横スクロールに変わる</td></tr>
+      <tr><th>, . - ;</th><td>大西配列では文字段の内側（人差し指）に配置される。<code>[</code> <code>]</code> <code>'</code> はレイヤー 1 の右手内側列へ移動</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="page">
+  <div class="layer-block">
+    <h2>レイヤー 1<span class="note">左手 Esc 長押し、または Lock キーで固定 — 右手テンキー / 左手 Excel 操作</span></h2>
+    <div class="kb">
+      <div class="half">
+        <div class="key small"><div class="main">Esc</div><div class="sup">ロック中のみ</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key small"><div class="main">F2</div><div class="sup">セル編集</div></div>
+        <div class="key small"><div class="main">Tab</div></div>
+        <div class="key sys xsmall"><div class="main">⌘Z</div><div class="sup">元に戻す</div></div>
+        <div class="key small"><div class="main">BS</div><div class="sup">内容クリア</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key"><div class="main">←</div></div>
+        <div class="key"><div class="main">↑</div></div>
+        <div class="key"><div class="main">↓</div></div>
+        <div class="key"><div class="main">→</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key sys xsmall"><div class="main">⌘1</div><div class="sup">セルの書式</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⇧=</div><div class="sup">セル挿入</div></div>
+        <div class="key sys xsmall"><div class="main">⌘-</div><div class="sup">セル削除</div></div>
+        <div class="key sys xsmall"><div class="main">⌘⇧F</div><div class="sup">フィルタ</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key mod"><div class="main">Shift</div></div>
+        <div class="key mod small"><div class="pre">Hold: ⌘</div><div class="main">Enter</div></div>
+      </div>
+      <div class="half">
+        <div class="key"><div class="main">[</div></div>
+        <div class="key num"><div class="main">7</div></div>
+        <div class="key num"><div class="main">8</div></div>
+        <div class="key num"><div class="main">9</div></div>
+        <div class="key small"><div class="main">Del</div></div>
+        <div class="key small"><div class="main">BS</div></div>
+
+        <div class="key"><div class="main">]</div></div>
+        <div class="key num"><div class="main">4</div></div>
+        <div class="key num"><div class="main">5</div></div>
+        <div class="key num"><div class="main">6</div></div>
+        <div class="key num"><div class="main">+</div></div>
+        <div class="key num"><div class="main">*</div></div>
+
+        <div class="key"><div class="main">&#39;</div></div>
+        <div class="key num"><div class="main">1</div></div>
+        <div class="key num"><div class="main">2</div></div>
+        <div class="key num"><div class="main">3</div></div>
+        <div class="key num"><div class="main">&#8722;</div></div>
+        <div class="key num"><div class="main">/</div></div>
+
+        <div class="key num"><div class="main">.</div></div>
+        <div class="key num"><div class="main">0</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key num"><div class="main">~</div></div>
+        <div class="key lay xsmall"><div class="main">Lock</div><div class="sup">レイヤー1固定</div></div>
+      </div>
+    </div>
+    <p style="margin:1mm 0 0; font-size:8.5pt; color:#5b6572;">
+      右手はテンキー相当の数字配列。左手は Excel 操作に割り当て、左親指の Shift・⌘（⌘ 側は単押しで Enter）と方向キーを組み合わせると片手で移動と選択が完結する
+      （<code>⌘+方向</code> でデータ端へジャンプ、<code>⇧+方向</code> で選択拡張、<code>⌘⇧+方向</code> で端まで選択）。
+      長時間の表操作では、Esc を長押ししたまま右小指最下段の Lock（<code>&amp;tog 1</code>）を押すとレイヤー 1 が固定され、両手が自由になる。もう一度 Lock を押すと解除。
+      固定中は左小指が空くため、Esc の位置にセル編集キャンセル用の Esc を置いてある（固定中のみ有効）。文字を入力するときは Lock を解除する。
+      エンコーダは Default レイヤーの設定を引き継ぐ。
+    </p>
+  </div>
+
+  <div class="layer-block">
+    <h2>レイヤー 2<span class="note">左手 Tab 長押しで有効 — エディタのカーソル操作 / 記号 / Magnet</span></h2>
+    <div class="kb">
+      <div class="half">
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key mod xsmall"><div class="main">⌘ + ←</div><div class="sup">行頭</div></div>
+        <div class="key mod xsmall"><div class="main">⌘ + ↑</div><div class="sup">文書先頭</div></div>
+        <div class="key mod xsmall"><div class="main">⌘ + ↓</div><div class="sup">文書末尾</div></div>
+        <div class="key mod xsmall"><div class="main">⌘ + →</div><div class="sup">行末</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key"><div class="main">←</div></div>
+        <div class="key"><div class="main">↑</div></div>
+        <div class="key"><div class="main">↓</div></div>
+        <div class="key"><div class="main">→</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key num"><div class="main">{</div></div>
+        <div class="key num"><div class="main">}</div></div>
+        <div class="key num"><div class="main">"</div></div>
+        <div class="key num"><div class="main">:</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key mod"><div class="main">Shift</div></div>
+        <div class="key mod"><div class="main">⌥</div></div>
+      </div>
+      <div class="half">
+        <div class="key num"><div class="main">&amp;</div></div>
+        <div class="key num"><div class="main">*</div></div>
+        <div class="key num"><div class="main">(</div></div>
+        <div class="key num"><div class="main">)</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⌥D</div><div class="sup">左 1/3</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⌥E</div><div class="sup">左 2/3</div></div>
+
+        <div class="key num"><div class="main">$</div></div>
+        <div class="key num"><div class="main">%</div></div>
+        <div class="key num"><div class="main">^</div></div>
+        <div class="key num"><div class="main">_</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⌥F</div><div class="sup">中央 1/3</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⌥R</div><div class="sup">中央 2/3</div></div>
+
+        <div class="key num"><div class="main">!</div></div>
+        <div class="key num"><div class="main">@</div></div>
+        <div class="key num"><div class="main">#</div></div>
+        <div class="key num"><div class="main">|</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⌥G</div><div class="sup">右 1/3</div></div>
+        <div class="key sys xsmall"><div class="main">⌃⌥T</div><div class="sup">右 2/3</div></div>
+
+        <div class="key sys xsmall"><div class="main">⌃←</div><div class="sup">デスクトップ左</div></div>
+        <div class="key sys xsmall"><div class="main">⌃→</div><div class="sup">デスクトップ右</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key sys xsmall"><div class="main">⌘⇧4</div><div class="sup">スクショ</div></div>
+        <div class="key sys xsmall"><div class="main">Mission<br>Control</div></div>
+      </div>
+    </div>
+    <table style="margin-top:2mm;">
+      <tr><th>エンコーダ（左）</th><td>回転で音量 下 / 上 ― このレイヤーだけ横スクロールから切り替わる</td></tr>
+      <tr><th>エンコーダ（右）</th><td>回転で縦スクロール（下 / 上）</td></tr>
+    </table>
+    <p style="margin:1.5mm 0 0; font-size:8.5pt; color:#5b6572;">
+      左手中段が方向キー、その上段が行頭・行末・文書先頭・文書末尾。左親指の Shift と ⌥ を併用して
+      <code>⇧+方向</code>（選択拡張）、<code>⌥+方向</code>（単語単位の移動）、<code>⇧⌥+方向</code>（単語単位の選択）、
+      <code>⇧+⌘←</code>（行頭まで選択）を作る。左手下段には Shift が必要な記号のうち、他のレイヤーに無い 4 つを置く。
+      右手は内側 4 列が記号、小指 2 列が Magnet のウィンドウ分割（左列が 1/3、右列が 2/3、行が 左・中央・右）。右親指はデスクトップの左右切替、右小指下段はスクリーンショット（範囲指定）と Mission Control（<code>&amp;kp C_AC_DESKTOP_SHOW_ALL_WINDOWS</code>）。
+      <code>⌘C</code> <code>⌘V</code> <code>⌘R</code> は Default レイヤーの ⌘（Enter 長押し）と文字キーで押せるため、このレイヤーからは外した。
+    </p>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 ============ -->
+<div class="page">
+  <div class="layer-block">
+    <h2>レイヤー 3<span class="note">右小指の <code>\</code> 長押しで有効 — ファンクションキー / Bluetooth / ファームウェア</span></h2>
+    <div class="kb">
+      <div class="half">
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key sys xsmall"><div class="main">Boot<br>loader</div></div>
+        <div class="key"><div class="main">F1</div></div>
+        <div class="key"><div class="main">F2</div></div>
+        <div class="key"><div class="main">F3</div></div>
+        <div class="key"><div class="main">F4</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key"><div class="main">F5</div></div>
+        <div class="key"><div class="main">F6</div></div>
+        <div class="key"><div class="main">F7</div></div>
+        <div class="key"><div class="main">F8</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key sys xsmall"><div class="main">Sys<br>Reset</div></div>
+        <div class="key"><div class="main">F9</div></div>
+        <div class="key"><div class="main">F10</div></div>
+        <div class="key"><div class="main">F11</div></div>
+        <div class="key"><div class="main">F12</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+      </div>
+      <div class="half">
+        <div class="key sys small"><div class="main">BT 0</div></div>
+        <div class="key sys small"><div class="main">BT 1</div></div>
+        <div class="key sys small"><div class="main">BT 2</div></div>
+        <div class="key sys xsmall"><div class="main">BT<br>次へ</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key sys xsmall"><div class="main">BT<br>クリア</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+
+        <div class="key sys xsmall"><div class="main">Boot<br>loader</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key sys xsmall"><div class="main">Sys<br>Reset</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key gap"></div>
+        <div class="key gap"></div>
+        <div class="key none"><div class="main">—</div></div>
+        <div class="key lay small"><div class="main">L3</div></div>
+      </div>
+    </div>
+    <table style="margin-top:2mm;">
+      <tr><th>入り方</th><td>右小指最下段の <code>\</code> を長押し（<code>&amp;lt 3</code>）。単押しなら <code>\</code> が出る</td></tr>
+      <tr><th>BT 0〜2 / 次へ</th><td>Bluetooth プロファイルの直接選択と、次のプロファイルへの切り替え</td></tr>
+      <tr><th>BT クリア</th><td>現在のプロファイルのペアリング情報を消去</td></tr>
+      <tr><th>Bootloader / Sys Reset</th><td>左右それぞれに配置。ZMK のリセットは<strong>押した側の半身だけ</strong>に効くため、左手を書き込むときは左のキー、右手（Central）は右のキーを使う</td></tr>
+      <tr><th>置き場所</th><td>誤爆を避けるため、修飾キーではなく文字キーの位置（<code>Q</code> <code>Z</code> <code>G</code> <code>J</code>）に置いている</td></tr>
+      <tr><th>右小指の 2 列が空き</th><td>入り口の <code>\</code> と同じ指になるため、右小指の列にはキーを置いていない</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>レイヤー 4<span class="note">右クリック（左親指）長押しで有効 — スクロール</span></h2>
+    <p style="margin:0; font-size:8.5pt;">
+      押している間、トラックパッドの動きが縦横スクロールに変わる（<code>zip_xy_to_scroll_mapper</code>、感度 1/16）。
+      キーはすべて Default レイヤーを透過するため、⌘（Enter 長押し）を足したズーム、
+      Shift（<code>`</code> 長押し）を足した横スクロールもそのまま使える。
+      左親指で押しながら、右手でトラックパッドを操作する。
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>動作の設定値</h2>
+    <div class="cols">
+      <div>
+        <table>
+          <tr><th>スクロール量</th><td>150（既定値と同じ）</td></tr>
+          <tr><th>スクロール加速</th><td>なし（最大速度まで 0ms、加速指数 0）</td></tr>
+          <tr><th>Mod-Tap</th><td>直前 150ms 以内に打鍵があれば単押し扱い</td></tr>
+          <tr><th>Enter / ⌘、` / ⇧</th><td>balanced、判定 200ms、quick-tap 200ms（<code>mtq</code>）</td></tr>
+          <tr><th>Space / Option</th><td>tap-preferred、判定 200ms、prior-idle 150ms</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>エンコーダ</th><td><code>zmk_encoder</code> モジュール。1 回転 1 イベントでスクロールを完了</td></tr>
+          <tr><th>中央側</th><td>右手（R）。ZMK Studio 有効</td></tr>
+          <tr><th>周辺側</th><td>左手（L）</td></tr>
+          <tr><th>ポインタ</th><td>トラックパッド版 / トラックボール版の 2 種</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ファームウェアのビルド構成</h2>
+    <table>
+      <tr><th>sosho_R_trackpad</th><td>右手・トラックパッド版（Central、ZMK Studio 対応）</td></tr>
+      <tr><th>sosho_R_trackball</th><td>右手・トラックボール版（Central、ZMK Studio 対応）</td></tr>
+      <tr><th>sosho_L_trackpad</th><td>左手・トラックパッド版（Peripheral）</td></tr>
+      <tr><th>sosho_L_trackball</th><td>左手・トラックボール版（Peripheral）</td></tr>
+      <tr><th>settings_reset</th><td>ペアリング情報など保存済み設定の消去用</td></tr>
+    </table>
+    <p style="margin-top:2mm; font-size:8.5pt; color:#5b6572;">
+      いずれも board は <code>xiao_ble/nrf52840/zmk</code>、シールドに <code>rgbled_adapter</code> を併用。
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
