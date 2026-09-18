@@ -77,9 +77,9 @@ keymap {
     default_layer {
         bindings = <
             &lt 1 ESC  &kp Q   &kp L  &kp U     &kp COMMA &kp DOT    &kp F      &kp W      &kp R      &kp Y    &kp P     &kp BSPC
-            &lt 2 TAB  &kp E   &kp I  &kp A     &kp O     &kp MINUS  &kp K      &kp T      &kp N      &kp S    &kp H     &kp EQUAL
-            &kp LSHFT  &kp Z   &kp X  &kp C     &kp V     &kp SEMI   &kp G      &kp D      &kp M      &kp J    &kp B     &mt LCTRL SLASH
-            &kp LALT           &kp LCTRL  &mkp LCLK       &lt_mkp 4 RCLK      &mtq LGUI ENTER  &mt_spc LALT SPACE  &mtq RSHFT GRAVE  &lt 3 BSLH
+            &lt 2 TAB  &kp E   &kp I  &kp A     &kp O     &kp MINUS  &kp K      &kp T      &kp N      &kp S    &kp H     &mt LCTRL EQUAL
+            &kp LSHFT  &kp Z   &kp X  &kp C     &kp V     &kp SEMI   &kp G      &kp D      &kp M      &kp J    &kp B     &kp SLASH
+            &kp LALT           &kp LCTRL  &mkp LCLK       &lt_mkp 4 RCLK      &mtq LGUI ENTER  &mt_spc LALT SPACE  &mtq RSHFT GRAVE  &lt 3 GREATER_THAN
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
@@ -87,19 +87,19 @@ keymap {
 	
     layer_1 {
         bindings = <
-            &kp ESC  &none  &kp F2    &kp TAB            &kp LG(Z)      &kp BSPC       &kp LBKT &kp N7  &kp N8  &kp N9  &kp DEL    &kp BSPC
-            &none  &none  &kp LEFT    &kp UP             &kp DOWN       &kp RIGHT      &kp RBKT &kp N4  &kp N5  &kp N6  &kp PLUS   &kp ASTRK
-            &none  &none  &kp LG(N1)  &kp LC(LS(EQUAL))  &kp LG(MINUS)  &kp LG(LS(F))  &kp SQT  &kp N1  &kp N2  &kp N3  &kp MINUS  &kp SLASH
+            &kp ESC  &kp F2      &kp TAB            &kp LG(Z)      &kp BSPC       &none  &kp LBKT &kp N7  &kp N8  &kp N9  &kp DEL    &kp BSPC
+            &none    &kp LEFT    &kp UP             &kp DOWN       &kp RIGHT      &none  &kp RBKT &kp N4  &kp N5  &kp N6  &kp PLUS   &kp ASTRK
+            &none    &kp LG(N1)  &kp LC(LS(EQUAL))  &kp LG(MINUS)  &kp LG(LS(F))  &none  &kp SQT  &kp N1  &kp N2  &kp N3  &kp MINUS  &kp SLASH
             &none  &none                                 &kp LSHFT      &kp ENTER        &mt_num LGUI DOT  &kp N0       &kp TILDE  &tog 1
         >;
     };
 
     layer_2 {
         bindings = <
-            &kp ESC  &none  &kp LG(LEFT) &kp LG(UP)  &kp LG(DOWN)  &kp LG(RIGHT)     &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR   &kp LC(LA(D))  &kp LC(LA(E))
-            &none  &none  &kp LEFT      &kp UP      &kp DOWN      &kp RIGHT         &kp DLLR  &kp PRCNT  &kp CARET  &kp UNDER  &kp LC(LA(F))  &kp LC(LA(R))
-            &none  &none  &kp LBRC      &kp RBRC    &kp DQT       &kp COLON         &kp EXCL  &kp AT     &kp HASH   &kp PIPE   &kp LC(LA(G))  &kp LC(LA(T))
-            &none  &none                &kp LSHFT   &kp LC(LEFT)  &kp LALT          &kp LC(RIGHT)                              &tog 2  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS
+            &kp ESC  &kp LG(LEFT)  &kp LG(UP)  &kp LG(DOWN)  &kp LG(RIGHT)  &none          &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR   &kp LC(LA(D))  &kp LC(LA(E))
+            &none    &kp LEFT      &kp UP      &kp DOWN      &kp RIGHT      &kp BSLH       &kp DLLR  &kp PRCNT  &kp CARET  &kp UNDER  &kp LC(LA(F))  &kp LC(LA(R))
+            &none    &kp LBRC      &kp RBRC    &kp DQT       &kp COLON      &kp LESS_THAN  &kp EXCL  &kp AT     &kp HASH   &kp PIPE   &kp LC(LA(G))  &kp LC(LA(T))
+            &none  &none                &kp LC(LEFT)  &kp LSHFT   &kp LALT          &kp LC(RIGHT)                              &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS  &tog 2
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
