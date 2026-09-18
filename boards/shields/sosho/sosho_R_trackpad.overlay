@@ -34,7 +34,7 @@ https://zmk.dev/docs/keymaps/input-processors
 	input-processors = <&zip_xy_scaler 5 2>;
 
 	scroller {
-		layers = <3>;
+		layers = <4>;
 		input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
 	};
 };
@@ -45,7 +45,7 @@ https://zmk.dev/docs/keymaps/input-processors
 	input-processors = <&zip_xy_scaler 5 2>;
 
 	scroller {
-		layers = <3>;
+		layers = <4>;
 		input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
 	};
 };
@@ -56,7 +56,7 @@ https://zmk.dev/docs/keymaps/input-processors
 	input-processors = <&zip_xy_scaler 5 2>;
 
 	scroller {
-		layers = <3>;
+		layers = <4>;
 		input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
 	};
 };
